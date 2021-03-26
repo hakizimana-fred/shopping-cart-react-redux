@@ -20,7 +20,32 @@ const initialState = {
 }
 
 export const cartReducer = (state = initialState, action) => {
-    return state
+    switch (action.type) {
+
+        case 'ADD_TO_CART':
+            // check if action id exists in hte added items
+            let addedItem = state.items.find(item => item.id === action.payload)
+            let existed_item = state.addedItems.find(item => action.payload === item.id)
+
+            if (existed_item) {
+                addedItem.quantity += 1
+                return {
+                    ...state,
+                    total: state.total + addedItem.price
+                }
+            } else {
+                addedItem.quantity = 1
+                let newTotal = state.total + addedItem.price
+                return {
+                    ...state,
+                    addedItems: [...state.addedItems, addedItem],
+                    total: newTotal
+                }
+            }
+        default:
+            return state
+    }
+
 }
 
 

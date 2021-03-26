@@ -25,22 +25,36 @@ export const cartReducer = (state = initialState, action) => {
         case 'ADD_TO_CART':
             // check if action id exists in hte added items
             let addedItem = state.items.find(item => item.id === action.payload)
-            let existed_item = state.addedItems.find(item => action.payload === item.id)
+            let existed_item = state.addedItems.find(item => item.id === action.payload)
 
             if (existed_item) {
+                alert('Item already in the cart')
                 addedItem.quantity += 1
                 return {
                     ...state,
                     total: state.total + addedItem.price
+
                 }
             } else {
+                let newTotal = addedItem.price + state.total
                 addedItem.quantity = 1
-                let newTotal = state.total + addedItem.price
                 return {
                     ...state,
                     addedItems: [...state.addedItems, addedItem],
                     total: newTotal
                 }
+            }
+
+        case 'REMOVE_ITEM':
+            let removedItem = state.addedItems.find(item => item.id === action.payload)
+            let newItems = state.addedItems.filter(item => item.id !== action.payload)
+
+            let newTotal = state.total - removedItem.price
+
+            return {
+                ...state,
+                addedItems: newItems,
+                total: newTotal
             }
         default:
             return state

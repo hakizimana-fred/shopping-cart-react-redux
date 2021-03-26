@@ -10,7 +10,6 @@ export const Home = () => {
     const dispatch = useDispatch()
 
 
-
     return (
         <Container>
             <Row>

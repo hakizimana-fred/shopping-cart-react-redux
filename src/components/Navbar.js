@@ -1,15 +1,16 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const NavbarMenu = () => {
     return (
         <>
-            <Navbar bg="primary" variant="dark">
-                <Navbar.Brand href="#home">ShopReact</Navbar.Brand>
+            <Navbar bg="dark" variant="dark">
+                <Link to="/" className="navbar-brand">ShopReact</Link>
                 <Nav className="mr-auto">
-                    <Nav.Link href="#home">Shop</Nav.Link>
-                    <Nav.Link href="#features">My cart</Nav.Link>
-                    <Nav.Link href="#pricing">Shopping_cart</Nav.Link>
+                    <Link to='/' className="nav-link">Shopp</Link>
+                    <Link to='/cart' className="nav-link">My cart</Link>
+                    <Link to='/' className='nav-link'>Shopping_cart</Link>
                 </Nav>
             </Navbar>
             <br />

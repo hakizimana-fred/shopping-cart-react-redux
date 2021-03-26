@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Row, Card, Col, Button } from 'react-bootstrap'
 import { addToCart } from '../Redux/actions/productsActions'
+import { getProducts } from '../Redux/actions/productsActions'
 
 export const Home = () => {
 
     const products = useSelector(state => state.items)
     const dispatch = useDispatch()
+
+
 
     return (
         <Container>

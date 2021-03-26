@@ -4,3 +4,7 @@ export const addToCart = (id) => ({
     payload: id
 })
 
+export const getProducts = (id) => ({
+    type: 'GET_ITEMS',
+})
+
